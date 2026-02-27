@@ -1,0 +1,121 @@
+/* ===== RESET BÁSICO ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* ===== CUERPO ===== */
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #d9e2ec);
+    padding:40px 20px;
+    color:#2c3e50;
+}
+
+/* ===== TÍTULOS ===== */
+h1{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:10px;
+    color:#1a252f;
+}
+
+h3{
+    text-align:center;
+    margin-bottom:30px;
+    font-weight:400;
+    color:#555;
+}
+
+/* ===== TABLA ===== */
+table{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    border-collapse:collapse;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== ENCABEZADO ===== */
+th{
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    color:white;
+    padding:12px;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* ===== CELDAS ===== */
+td{
+    padding:10px;
+    font-size:14px;
+    border-bottom:1px solid #eee;
+    vertical-align:top;
+}
+
+/* ===== FILAS ===== */
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+tr:hover{
+    background:#e3f2fd;
+    transition:0.2s ease;
+}
+
+/* ===== CÓDIGO ===== */
+code{
+    background:#f4f4f4;
+    padding:6px;
+    border-radius:5px;
+    font-family: Consolas, monospace;
+    font-size:13px;
+    display:block;
+    border-left:4px solid #3498db;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+
+    table, thead, tbody, th, td, tr{
+        display:block;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tr{
+        margin-bottom:15px;
+        background:white;
+        padding:15px;
+        border-radius:8px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    td{
+        border:none;
+        position:relative;
+        padding-left:50%;
+        font-size:13px;
+    }
+
+    td::before{
+        position:absolute;
+        left:15px;
+        top:10px;
+        font-weight:bold;
+        color:#34495e;
+    }
+
+    td:nth-of-type(1)::before{ content:"Num."; }
+    td:nth-of-type(2)::before{ content:"Etiqueta"; }
+    td:nth-of-type(3)::before{ content:"Descripción"; }
+    td:nth-of-type(4)::before{ content:"Ejemplo"; }
+    td:nth-of-type(5)::before{ content:"Elemento Adicional"; }
+}
