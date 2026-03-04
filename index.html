@@ -1,184 +1,506 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>102 Etiquetas HTML</title>
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
-    margin:20px;
-}
-h1{
-    text-align:center;
-}
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
-}
-th, td{
-    border:1px solid #ccc;
-    padding:8px;
-    text-align:left;
-    vertical-align:top;
-    font-size:14px;
-}
-th{
-    background:#2c3e50;
-    color:white;
-}
-tr:nth-child(even){
-    background:#f2f2f2;
-}
-code{
-    background:#eee;
-    padding:3px;
-    display:block;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Digital Reyes - Soluciones para Personas y Empresas</title>
+    
+        <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #007bff;
+            --primary-red: #cc0000;
+            --light-bg: #f5f5f5;
+            --text-color: #333;
+            --white: #ffffff;
+            --gray-medium: #ddd;
+            --gray-dark: #666;
+            --accent-blue: #cce5ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        ul { list-style: none; }
+
+        /* --- BOTONES --- */
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover { background-color: #b30000; }
+
+        .btn-secondary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-text { color: var(--gray-dark); font-size: 0.9rem; }
+        .btn-text:hover { color: var(--primary-red); }
+
+        /* --- ENCABEZADO (HEADER) --- */
+        header { background-color: var(--white); }
+
+        .top-bar {
+            background-color: #f58032;
+            color: var(--gray-dark);
+            border-bottom: 1px solid var(--gray-medium);
+            font-size: 0.85rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            color: #007bff;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+        }
+
+        .top-nav {
+            display: flex;
+            color: #000000;
+            gap: 15px;
+            align-items: center;
+        }
+        .top-nav a:hover { color: var(--primary-blue); }
+
+        .btn-login {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+
+        .search-icon { font-size: 1.1rem; color: var(--primary-blue); }
+
+        .main-nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo h1 { font-size: 1.8rem; line-height: 1.2; }
+        .logo-b { color: var(--primary-red); }
+        .logo-anco { color: var(--text-color); font-weight: normal;}
+        .logo-r { color: var(--primary-blue); }
+        .logo-example { color: var(--primary-blue); }
+        .logo p { font-size: 0.8rem; color: var(--gray-dark); }
+
+        .main-nav { display: flex; gap: 20px; font-weight: 500; }
+        .main-nav a.active { color: var(--primary-blue); border-bottom: 2px solid var(--primary-red); }
+        .main-nav a:not(.active):hover { color: var(--primary-red); }
+
+        .products-bar { background-color: var(--secondary-blue); color: var(--white); }
+        .products-nav { display: flex; justify-content: center; gap: 10px; }
+        .products-nav a {
+            padding: 15px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-top: 3px solid transparent;
+        }
+        .products-nav a.active {
+            background-color: var(--accent-blue);
+            color: var(--primary-blue);
+            border-top-color: var(--white);
+        }
+        .products-nav a:not(.active):hover { background-color: rgba(255, 255, 255, 0.1); }
+
+        /* --- MAIN CONTENIDO --- */
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+        }
+        .hero-content { text-align: left; }
+        .breadcrumb { font-size: 0.9rem; margin-bottom: 10px; color: rgba(255,255,255,0.7); }
+        .hero-title { font-size: 3rem; margin-bottom: 15px; }
+        .hero-subtitle { font-size: 1.2rem; max-width: 600px; color: rgba(255,255,255,0.9); }
+
+        .filters-section {
+            background-color: var(--white);
+            padding: 30px;
+            margin-top: -50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        
+        .filters-section h3 {
+            color: var(--secondary-blue);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .control { display: block; position: relative; padding-left: 30px; margin-bottom: 12px; cursor: pointer; font-size: 1rem; }
+        .control input { position: absolute; z-index: -1; opacity: 0; }
+        .control__indicator {
+            position: absolute;
+            top: 2px; left: 0; height: 20px; width: 20px;
+            background: var(--white);
+            border: 1px solid var(--gray-medium);
+        }
+        .control input:checked ~ .control__indicator { background: var(--primary-blue); border-color: var(--primary-blue); }
+        .control:hover input:not([checked]) ~ .control__indicator { background: var(--light-bg); }
+        .control input:checked ~ .control__indicator:after { display: block; }
+        .control__indicator:after {
+            content: ''; position: absolute; display: none;
+            left: 7px; top: 3px; width: 5px; height: 10px;
+            border: solid var(--white); border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .filter-box { flex: 2; }
+        .filter-options {  grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; }
+        .filter-actions { display: flex; align-items: center; gap: 20px; }
+        .search-box { flex: 1; }
+        .search-input-wrapper { display: flex; border: 1px solid var(--gray-medium); border-radius: 5px; overflow: hidden; }
+        .search-input-wrapper input { flex: 1; padding: 10px; border: none; outline: none; font-size: 1rem; }
+        .search-btn { background-color: transparent; border: none; padding: 10px; color: var(--gray-dark); cursor: pointer; font-size: 1.1rem; }
+
+        .results-tabs { margin-top: 40px; margin-bottom: 60px; }
+        .tabs-header { display: flex; border-bottom: 1px solid var(--gray-medium); }
+        .tab-btn {
+            background-color: transparent; border: none; padding: 15px 25px;
+            font-size: 1rem; font-weight: bold; color: var(--primary-blue);
+            cursor: pointer; border-bottom: 3px solid transparent;
+        }
+        .tab-btn.active { color: var(--primary-red); border-bottom-color: var(--primary-red); }
+        .tab-btn:hover:not(.active) { background-color: var(--light-bg); }
+        .tabs-content { background-color: var(--white); padding: 30px; border-radius: 0 0 8px 8px; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+
+        .about-reference-section { background-color: var(--primary-blue); color: var(--white); padding: 60px 0; }
+        .about-reference-content { display: flex; align-items: center; gap: 40px; }
+        .reference-text h2 { font-size: 2rem; margin-bottom: 20px; color: var(--accent-blue); }
+        .reference-text p { margin-bottom: 30px; max-width: 800px; font-size: 1.1rem; }
+
+        /* --- PIE DE PÁGINA (FOOTER) --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: rgba(255,255,255,0.8);
+            padding: 50px 0 0;
+            font-size: 0.9rem;
+            border-top: 5px solid var(--primary-red);
+        }
+        .footer-content { display: flex; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
+        .footer-column h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a:hover { color: var(--accent-blue); text-decoration: underline; }
+        .contact-column p { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; }
+        .contact-column i { margin-top: 3px; color: var(--white); }
+        .contact-column .lang-alt { font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .social-icons { display: flex; gap: 15px; margin-top: 25px; }
+        .social-icons a {
+            background-color: var(--secondary-blue); color: var(--white);
+            width: 35px; height: 35px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .social-icons a:hover { background-color: var(--white); color: var(--primary-blue); }
+        .footer-bottom { background-color: #00264d; color: rgba(255,255,255,0.5); padding: 15px 0; text-align: center; font-size: 0.8rem; }
+
+        /* --- ADAPTABILIDAD (RESPONSIVE) --- */
+        @media (max-width: 992px) {
+            .filters-section { flex-direction: column; margin-top: 20px; }
+            .products-nav { flex-wrap: wrap; }
+            .products-nav a { flex: 1 1 30%; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .hero-title { font-size: 2.2rem; }
+            .footer-content { flex-direction: column; gap: 20px; }
+        }
+
+        /* --- CLASES DE TEXTO ESPECIALES --- */
+        .texto-con-borde {
+            font-size:3rem; font-weight: bold; color: rgb(221, 20, 20);
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <style>
+        /* Contenedor principal del slider */
+        .slider-slick {
+            width: 100%;
+            height: 60vh; /* Altura visible del banner */
+            overflow: hidden; /* Oculta lo que se sale mientras carga */
+            background-color: var(--gray-medium); /* Color de fondo temporal */
+        }
+
+        /* Estilo para cada slide individual */
+        .slide-slick {
+            height: 60vh; /* Debe coincidir con la altura del contenedor */
+            background-size: cover; /* Ajusta la imagen para cubrir todo el espacio */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat;
+        }
+
+        /* Personalización de las flechas de navegación (Slick Buttons) */
+        .slick-prev, .slick-next {
+            z-index: 10; /* Asegura que estén sobre las imágenes */
+            width: 50px;
+            height: 50px;
+        }
+        .slick-prev { left: 20px; } /* Posición flecha izquierda */
+        .slick-next { right: 20px; } /* Posición flecha derecha */
+        
+        /* Agrandar y dar color a las flechas */
+        .slick-prev:before, .slick-next:before {
+            font-size: 40px;
+            color: var(--white);
+            opacity: 0.7;
+        }
+        .slick-prev:hover:before, .slick-next:hover:before { opacity: 1; }
+
+        /* Personalización de los puntos de navegación (Dots) */
+        .slick-dots { bottom: 20px; }
+        .slick-dots li button:before { font-size: 12px; color: var(--white); opacity: 0.5; }
+        .slick-dots li.slick-active button:before { color: var(--white); opacity: 1; }
+    </style>
 </head>
 <body>
 
-<h1>102 Etiquetas Fundamentales para la Programacion en HTML</h1>
-<h3>By Jose L. Reyes.</h3>
+<header>
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="currency-info">USD <i class="fas fa-chevron-down"></i> Compra 59.00 | Venta 61.00</div>
+            <nav class="top-nav">
+                <a href="#">Canales</a>
+                <a href="#">Sobre Nosotros</a>
+                <a href="#">Mapa</a>
+                <a href="#">Calculadoras</a>
+                <a href="#" class="btn-login">Acceder a TuBanco <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+            </nav>
+        </div>
+    </div>
 
-<table>
-<tr>
-<th>Num.</th>
-<th>Etiqueta.</th>
-<th>Descripción.</th>
-<th>Ejemplo.</th>
-<th>Elemento Adicional.</th>
-</tr>
+    <div class="main-nav-bar container">
+        <div class="logo">
+            <h1><span class="texto-con-borde" class="logo-b">B</span><span  class="logo-anco">ANCO</span><span class="texto-con-borde" class="logo-r">R</span><span  class="logo-example">EYES </span></h1>
+           <p>El banco de los dominicanos</p> 
+                       
+        </div>
+        <nav class="main-nav">
+            <a href="#" class="active">PERSONAS</a>
+            <a href="#">EMPRESARIAL</a>
+            <a href="#">PYME</a>
+            <a href="#">GUBERNAMENTAL</a>
+            <a href="#">INTERNACIONAL</a>
+        </nav>
+    </div>
 
-<tr><td>1</td><td>&lt;a&gt;</td><td>Define un hipervínculo.</td><td><code>&lt;a href="https://ejemplo.com"&gt;Ir&lt;/a&gt;</code></td><td>Puede usar target="_blank".</td></tr>
-<tr><td>2</td><td>&lt;abbr&gt;</td><td>Define una abreviatura.</td><td><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></td><td>Usa atributo title.</td></tr>
-<tr><td>3</td><td>&lt;address&gt;</td><td>Define información de contacto.</td><td><code>&lt;address&gt;contacto@email.com&lt;/address&gt;</code></td><td>Se muestra en cursiva.</td></tr>
-<tr><td>4</td><td>&lt;area&gt;</td><td>Define un área dentro de un mapa de imagen.</td><td><code>&lt;area shape="rect"&gt;</code></td><td>Se usa dentro de &lt;map&gt;.</td></tr>
-<tr><td>5</td><td>&lt;article&gt;</td><td>Define contenido independiente.</td><td><code>&lt;article&gt;Contenido&lt;/article&gt;</code></td><td>Usado en blogs.</td></tr>
-<tr><td>6</td><td>&lt;aside&gt;</td><td>Define contenido lateral.</td><td><code>&lt;aside&gt;Publicidad&lt;/aside&gt;</code></td><td>Relacionado indirectamente.</td></tr>
-<tr><td>7</td><td>&lt;audio&gt;</td><td>Incrusta audio.</td><td><code>&lt;audio controls&gt;&lt;/audio&gt;</code></td><td>Admite múltiples fuentes.</td></tr>
-<tr><td>8</td><td>&lt;b&gt;</td><td>Texto en negrita.</td><td><code>&lt;b&gt;Texto&lt;/b&gt;</code></td><td>No da importancia semántica.</td></tr>
-<tr><td>9</td><td>&lt;base&gt;</td><td>Define URL base.</td><td><code>&lt;base href="https://ejemplo.com"&gt;</code></td><td>Solo una vez en head.</td></tr>
-<tr><td>10</td><td>&lt;bdi&gt;</td><td>Aísla texto bidireccional.</td><td><code>&lt;bdi&gt;texto&lt;/bdi&gt;</code></td><td>Útil para idiomas RTL.</td></tr>
+    <div class="products-bar">
+        <div class="container products-nav">
+            <a href="#" class="active"><i class="fas fa-wallet"></i> CUENTAS</a>
+            <a href="#"><i class="fas fa-chart-line"></i> INVERSIONES</a>
+            <a href="#"><i class="fas fa-credit-card"></i> TARJETAS</a>
+            <a href="#"><i class="fas fa-hand-holding-usd"></i> PRÉSTAMOS</a>
+            <a href="#"><i class="fas fa-shield-alt"></i> SEGUROS</a>
+            <a href="#"><i class="fas fa-money-bill-wave"></i> REMESAS</a>
+            <a href="#"><i class="fas fa-headset"></i> ATENCIÓN</a>
+        </div>
+    </div>
+</header>
 
+<main>
+    <section class="slider-slick">
+        <div class="slide-slick" style="background-image: url('img/5f.jpg');"></div>
+        <div class="slide-slick" style="background-image: url('img/4f.jpg');"></div>
+        <div class="slide-slick" style="background-image: url('img/3f.jpg');"></div>
+        <div class="slide-slick" style="background-image: url('img/2f.jpg');"></div>
+        <div class="slide-slick" style="background-image: url('img/1f.jpg');"></div>
+    </section>
+        <section class="hero-section" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x600');">
+        <div class="container hero-content">
+            <div class="breadcrumb">Home / Cuentas</div>
+            <h1 class="hero-title">Cuentas</h1>
+            <p class="hero-subtitle">Descubre las soluciones de cuentas diseñadas para tus necesidades personales o empresariales.</p>
+        </div>
+    </section>
 
+    <section class="filters-section container">
+        <div class="filter-box">
+            <h3>¿QUÉ TE INTERESA?</h3>
+            <div class="filter-options">
+                <label class="control control--checkbox">Ahorro <input type="checkbox" checked="checked"/><div class="control__indicator"></div></label>
+                <label class="control control--checkbox">Corriente <input type="checkbox"/><div class="control__indicator"></div></label>
+                <label class="control control--checkbox">Vivienda <input type="checkbox"/><div class="control__indicator"></div></label>
+                <label class="control control--checkbox">Moneda Extranjera <input type="checkbox"/><div class="control__indicator"></div></label>
+                <label class="control control--checkbox">Menos comisiones <input type="checkbox"/><div class="control__indicator"></div></label>
+                <label class="control control--checkbox">Infantil <input type="checkbox"/><div class="control__indicator"></div></label>
+            </div>
+            <div class="filter-actions">
+                <button class="btn-primary">APLICAR FILTRO <i class="fas fa-chevron-right"></i></button>
+                <a href="#" class="btn-text">Borrar Filtros <i class="fas fa-times"></i></a>
+            </div>
+        </div>
+        <div class="search-box">
+            <h3>BÚSQUEDA</h3>
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Busque nombre del producto" id="searchInput">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
 
-<tr><td>11</td><td>&lt;bdo&gt;</td><td>Controla dirección del texto.</td><td><code>&lt;bdo dir="rtl"&gt;Texto&lt;/bdo&gt;</code></td><td>rtl o ltr.</td></tr>
-<tr><td>12</td><td>&lt;blockquote&gt;</td><td>Cita en bloque.</td><td><code>&lt;blockquote&gt;Cita&lt;/blockquote&gt;</code></td><td>Puede usar cite.</td></tr>
-<tr><td>13</td><td>&lt;body&gt;</td><td>Cuerpo del documento.</td><td><code>&lt;body&gt;Contenido&lt;/body&gt;</code></td><td>Solo uno.</td></tr>
-<tr><td>14</td><td>&lt;br&gt;</td><td>Salto de línea.</td><td><code>Texto&lt;br&gt;Texto</code></td><td>Etiqueta vacía.</td></tr>
-<tr><td>15</td><td>&lt;button&gt;</td><td>Botón interactivo.</td><td><code>&lt;button&gt;Click&lt;/button&gt;</code></td><td>Puede usar type.</td></tr>
-<tr><td>16</td><td>&lt;canvas&gt;</td><td>Dibujo gráfico con JS.</td><td><code>&lt;canvas&gt;&lt;/canvas&gt;</code></td><td>Usa JavaScript.</td></tr>
-<tr><td>17</td><td>&lt;caption&gt;</td><td>Título de tabla.</td><td><code>&lt;caption&gt;Título&lt;/caption&gt;</code></td><td>Dentro de table.</td></tr>
-<tr><td>18</td><td>&lt;cite&gt;</td><td>Título de obra.</td><td><code>&lt;cite&gt;Libro&lt;/cite&gt;</code></td><td>En cursiva.</td></tr>
-<tr><td>19</td><td>&lt;code&gt;</td><td>Fragmento de código.</td><td><code>&lt;code&gt;print()&lt;/code&gt;</code></td><td>Fuente monoespaciada.</td></tr>
-<tr><td>20</td><td>&lt;col&gt;</td><td>Columna de tabla.</td><td><code>&lt;col span="2"&gt;</code></td><td>Dentro de colgroup.</td></tr>
+    <section class="results-tabs container">
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="todos">TODOS</button>
+            <button class="tab-btn" data-tab="ahorro">AHORRO (9)</button>
+            <button class="tab-btn" data-tab="corriente">CORRIENTE (3)</button>
+            <button class="tab-btn" data-tab="digitales">DIGITALES (3)</button>
+        </div>
+        <div class="tabs-content">
+            <div id="tab-todos" class="tab-pane active"><p>Mostrando todos los productos disponibles...</p></div>
+        </div>
+    </section>
 
+    <section class="about-reference-section">
+        <div class="container about-reference-content">
+            <div class="reference-icon"><i class="fas fa-university fa-5x"></i></div>
+            <div class="reference-text">
+                <h2>¿Por qué Banco Reyes?</h2>
+                <p>Somos una institución financiera comprometida con el desarrollo económico y social de la República Dominicana. Ofrecemos soluciones seguras e innovadoras para cada etapa de tu vida.</p>
+                <a href="#" class="btn-secondary">CONOCER MÁS <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+</main>
 
+<footer>
 
-<tr><td>21</td><td>&lt;colgroup&gt;</td><td>Agrupa columnas.</td><td><code>&lt;colgroup&gt;&lt;/colgroup&gt;</code></td><td>Define estilos.</td></tr>
-<tr><td>22</td><td>&lt;data&gt;</td><td>Valor legible por máquina.</td><td><code>&lt;data value="123"&gt;Producto&lt;/data&gt;</code></td><td>Usa value.</td></tr>
-<tr><td>23</td><td>&lt;datalist&gt;</td><td>Lista de opciones.</td><td><code>&lt;datalist&gt;&lt;/datalist&gt;</code></td><td>Con input.</td></tr>
-<tr><td>24</td><td>&lt;dd&gt;</td><td>Descripción en lista.</td><td><code>&lt;dd&gt;Detalle&lt;/dd&gt;</code></td><td>Dentro de dl.</td></tr>
-<tr><td>25</td><td>&lt;del&gt;</td><td>Texto eliminado.</td><td><code>&lt;del&gt;Texto&lt;/del&gt;</code></td><td>Se muestra tachado.</td></tr>
+    <div class="container footer-content">
+        <div class="footer-column contact-column">
+            <h3>CONTACTO</h3>
+                       <p><i class="fas fa-phone"></i> 809 403-7254</p>
+            <p><i class="fas fa-map-marker-alt"></i> Encuentra una Oficina, Cajero o Subagente CERCA</p>
+                     <p><i class="fas fa-envelope"></i> josereyes@bancoreyes.com</p>
+            <p><i class="fas fa-envelope"></i> josereyes@bancoreyes.com</p>
+            <p>¿Deseas invertir en República Dominicana?</p>
+            <p class="lang-alt">Would you like to invest in the Dominican Republic?</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3>INFORMACIONES</h3>
+            <ul>
+                <li>Tu seguridad</li>
+                <li>Tarifario de productos y servicios</li>
+                <li>Tasas de referencia</li>
+                <li>Protección al Usuario</li>
+                <li>Línea Ética</li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>© 2023 Banco Reyes. Todos los derechos reservados.</p></div></div>
+</footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+<script>
+    // Esperar a que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('JavaScript del Banco de Ejemplo cargado');
 
-<tr><td>26</td><td>&lt;details&gt;</td><td>Contenido desplegable.</td><td><code>&lt;details&gt;&lt;/details&gt;</code></td><td>Con summary.</td></tr>
-<tr><td>27</td><td>&lt;dfn&gt;</td><td>Define término.</td><td><code>&lt;dfn&gt;HTML&lt;/dfn&gt;</code></td><td>Primera aparición.</td></tr>
-<tr><td>28</td><td>&lt;dialog&gt;</td><td>Cuadro de diálogo.</td><td><code>&lt;dialog&gt;&lt;/dialog&gt;</code></td><td>Modal.</td></tr>
-<tr><td>29</td><td>&lt;div&gt;</td><td>Contenedor genérico.</td><td><code>&lt;div&gt;Contenido&lt;/div&gt;</code></td><td>Muy usado.</td></tr>
-<tr><td>30</td><td>&lt;dl&gt;</td><td>Lista descriptiva.</td><td><code>&lt;dl&gt;&lt;/dl&gt;</code></td><td>Contiene dt y dd.</td></tr>
+        // --- FUNCIONALIDAD DE PESTAÑAS (TABS) ---
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
 
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                const targetPane = document.getElementById('tab-' + tabId);
+                if (targetPane) { targetPane.classList.add('active'); }
+            });
+        });
 
+        // --- EJEMPLO BÚSQUEDA ---
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.querySelector('.search-btn');
 
-<tr><td>31</td><td>&lt;dt&gt;</td><td>Término lista.</td><td><code>&lt;dt&gt;HTML&lt;/dt&gt;</code></td><td>En dl.</td></tr>
-<tr><td>32</td><td>&lt;em&gt;</td><td>Énfasis.</td><td><code>&lt;em&gt;Importante&lt;/em&gt;</code></td><td>Itálica semántica.</td></tr>
-<tr><td>33</td><td>&lt;embed&gt;</td><td>Contenido externo.</td><td><code>&lt;embed src="file.swf"&gt;</code></td><td>Multimedia.</td></tr>
-<tr><td>34</td><td>&lt;fieldset&gt;</td><td>Agrupa campos.</td><td><code>&lt;fieldset&gt;&lt;/fieldset&gt;</code></td><td>En formularios.</td></tr>
-<tr><td>35</td><td>&lt;figcaption&gt;</td><td>Título figura.</td><td><code>&lt;figcaption&gt;Texto&lt;/figcaption&gt;</code></td><td>Dentro figure.</td></tr>
-<tr><td>36</td><td>&lt;figure&gt;</td><td>Contenido ilustrado.</td><td><code>&lt;figure&gt;&lt;/figure&gt;</code></td><td>Imágenes.</td></tr>
-<tr><td>37</td><td>&lt;footer&gt;</td><td>Pie sección.</td><td><code>&lt;footer&gt;&lt;/footer&gt;</code></td><td>Autoría.</td></tr>
-<tr><td>38</td><td>&lt;form&gt;</td><td>Formulario.</td><td><code>&lt;form&gt;&lt;/form&gt;</code></td><td>Envía datos.</td></tr>
-<tr><td>39</td><td>&lt;h1&gt;</td><td>Encabezado 1.</td><td><code>&lt;h1&gt;Título&lt;/h1&gt;</code></td><td>Hasta h6.</td></tr>
-<tr><td>40</td><td>&lt;h2&gt;</td><td>Encabezado 2.</td><td><code>&lt;h2&gt;Título&lt;/h2&gt;</code></td><td>Subnivel.</td></tr>
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', () => {
+                alert('Has buscado: ' + searchInput.value);
+            });
+        }
+    });
 
-
-
-<tr><td>41</td><td>&lt;h3&gt;</td><td>Encabezado 3.</td><td><code>&lt;h3&gt;Título&lt;/h3&gt;</code></td><td>Jerarquía.</td></tr>
-<tr><td>42</td><td>&lt;h4&gt;</td><td>Encabezado 4.</td><td><code>&lt;h4&gt;Título&lt;/h4&gt;</code></td><td>Jerarquía.</td></tr>
-<tr><td>43</td><td>&lt;h5&gt;</td><td>Encabezado 5.</td><td><code>&lt;h5&gt;Título&lt;/h5&gt;</code></td><td>Jerarquía.</td></tr>
-<tr><td>44</td><td>&lt;h6&gt;</td><td>Encabezado 6.</td><td><code>&lt;h6&gt;Título&lt;/h6&gt;</code></td><td>Menor importancia.</td></tr>
-<tr><td>45</td><td>&lt;head&gt;</td><td>Metadatos.</td><td><code>&lt;head&gt;&lt;/head&gt;</code></td><td>No visible.</td></tr>
-<tr><td>46</td><td>&lt;header&gt;</td><td>Encabezado sección.</td><td><code>&lt;header&gt;&lt;/header&gt;</code></td><td>Intro.</td></tr>
-<tr><td>47</td><td>&lt;hr&gt;</td><td>Línea horizontal.</td><td><code>&lt;hr&gt;</code></td><td>Separador.</td></tr>
-<tr><td>48</td><td>&lt;html&gt;</td><td>Raíz documento.</td><td><code>&lt;html&gt;&lt;/html&gt;</code></td><td>Elemento principal.</td></tr>
-<tr><td>49</td><td>&lt;i&gt;</td><td>Texto alternativo.</td><td><code>&lt;i&gt;Texto&lt;/i&gt;</code></td><td>No semántico.</td></tr>
-<tr><td>50</td><td>&lt;iframe&gt;</td><td>Marco incrustado.</td><td><code>&lt;iframe src="pagina.html"&gt;</code></td><td>Muestra otra web.</td></tr>
-
-
-
-<tr><td>51</td><td>&lt;img&gt;</td><td>Imagen.</td><td><code>&lt;img src="img.jpg" alt="desc"&gt;</code></td><td>Requiere alt.</td></tr>
-<tr><td>52</td><td>&lt;input&gt;</td><td>Campo entrada.</td><td><code>&lt;input type="text"&gt;</code></td><td>Muchos tipos.</td></tr>
-<tr><td>53</td><td>&lt;ins&gt;</td><td>Texto insertado.</td><td><code>&lt;ins&gt;Nuevo&lt;/ins&gt;</code></td><td>Subrayado.</td></tr>
-<tr><td>54</td><td>&lt;kbd&gt;</td><td>Entrada teclado.</td><td><code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;</code></td><td>Monoespaciado.</td></tr>
-<tr><td>55</td><td>&lt;label&gt;</td><td>Etiqueta campo.</td><td><code>&lt;label&gt;Nombre&lt;/label&gt;</code></td><td>Asociado input.</td></tr>
-<tr><td>56</td><td>&lt;legend&gt;</td><td>Título fieldset.</td><td><code>&lt;legend&gt;Datos&lt;/legend&gt;</code></td><td>Formulario.</td></tr>
-<tr><td>57</td><td>&lt;li&gt;</td><td>Elemento lista.</td><td><code>&lt;li&gt;Item&lt;/li&gt;</code></td><td>ul/ol.</td></tr>
-<tr><td>58</td><td>&lt;link&gt;</td><td>Enlace recurso.</td><td><code>&lt;link rel="stylesheet"&gt;</code></td><td>En head.</td></tr>
-<tr><td>59</td><td>&lt;main&gt;</td><td>Contenido principal.</td><td><code>&lt;main&gt;&lt;/main&gt;</code></td><td>Único.</td></tr>
-<tr><td>60</td><td>&lt;map&gt;</td><td>Mapa imagen.</td><td><code>&lt;map&gt;&lt;/map&gt;</code></td><td>Con area.</td></tr>
-
-<tr><td>61</td><td>&lt;mark&gt;</td><td>Texto resaltado.</td><td><code>&lt;mark&gt;Texto&lt;/mark&gt;</code></td><td>Amarillo.</td></tr>
-<tr><td>62</td><td>&lt;meta&gt;</td><td>Metadatos.</td><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>En head.</td></tr>
-<tr><td>63</td><td>&lt;meter&gt;</td><td>Medida escalar.</td><td><code>&lt;meter value="2"&gt;</code></td><td>Barra.</td></tr>
-<tr><td>64</td><td>&lt;nav&gt;</td><td>Navegación.</td><td><code>&lt;nav&gt;&lt;/nav&gt;</code></td><td>Menús.</td></tr>
-<tr><td>65</td><td>&lt;noscript&gt;</td><td>Sin JS.</td><td><code>&lt;noscript&gt;Activa JS&lt;/noscript&gt;</code></td><td>Fallback.</td></tr>
-<tr><td>66</td><td>&lt;object&gt;</td><td>Objeto externo.</td><td><code>&lt;object data="file.pdf"&gt;</code></td><td>Multimedia.</td></tr>
-<tr><td>67</td><td>&lt;ol&gt;</td><td>Lista ordenada.</td><td><code>&lt;ol&gt;&lt;/ol&gt;</code></td><td>Números.</td></tr>
-<tr><td>68</td><td>&lt;optgroup&gt;</td><td>Grupo opciones.</td><td><code>&lt;optgroup&gt;&lt;/optgroup&gt;</code></td><td>Dentro select.</td></tr>
-<tr><td>69</td><td>&lt;option&gt;</td><td>Opción.</td><td><code>&lt;option&gt;Uno&lt;/option&gt;</code></td><td>Select.</td></tr>
-<tr><td>70</td><td>&lt;output&gt;</td><td>Resultado.</td><td><code>&lt;output&gt;10&lt;/output&gt;</code></td><td>Form.</td></tr>
-
-<tr><td>71</td><td>&lt;p&gt;</td><td>Párrafo.</td><td><code>&lt;p&gt;Texto&lt;/p&gt;</code></td><td>Bloque.</td></tr>
-<tr><td>72</td><td>&lt;param&gt;</td><td>Parámetro object.</td><td><code>&lt;param name="autoplay"&gt;</code></td><td>Dentro object.</td></tr>
-<tr><td>73</td><td>&lt;picture&gt;</td><td>Imagen adaptable.</td><td><code>&lt;picture&gt;&lt;/picture&gt;</code></td><td>Responsive.</td></tr>
-<tr><td>74</td><td>&lt;pre&gt;</td><td>Texto preformateado.</td><td><code>&lt;pre&gt;Texto&lt;/pre&gt;</code></td><td>Respeta espacios.</td></tr>
-<tr><td>75</td><td>&lt;progress&gt;</td><td>Progreso.</td><td><code>&lt;progress value="50"&gt;</code></td><td>Barra.</td></tr>
-<tr><td>76</td><td>&lt;q&gt;</td><td>Cita corta.</td><td><code>&lt;q&gt;Cita&lt;/q&gt;</code></td><td>Comillas.</td></tr>
-<tr><td>77</td><td>&lt;rp&gt;</td><td>Fallback ruby.</td><td><code>&lt;rp&gt;(&lt;/rp&gt;</code></td><td>Ruby.</td></tr>
-<tr><td>78</td><td>&lt;rt&gt;</td><td>Anotación ruby.</td><td><code>&lt;rt&gt;Texto&lt;/rt&gt;</code></td><td>Pronunciación.</td></tr>
-<tr><td>79</td><td>&lt;ruby&gt;</td><td>Anotación.</td><td><code>&lt;ruby&gt;&lt;/ruby&gt;</code></td><td>Idiomas asiáticos.</td></tr>
-<tr><td>80</td><td>&lt;s&gt;</td><td>Texto incorrecto.</td><td><code>&lt;s&gt;Texto&lt;/s&gt;</code></td><td>Tachado.</td></tr>
-
-<tr><td>81</td><td>&lt;samp&gt;</td><td>Salida programa.</td><td><code>&lt;samp&gt;Error&lt;/samp&gt;</code></td><td>Monoespaciado.</td></tr>
-<tr><td>82</td><td>&lt;script&gt;</td><td>Script JS.</td><td><code>&lt;script&gt;&lt;/script&gt;</code></td><td>Interactividad.</td></tr>
-<tr><td>83</td><td>&lt;section&gt;</td><td>Sección temática.</td><td><code>&lt;section&gt;&lt;/section&gt;</code></td><td>Semántico.</td></tr>
-<tr><td>84</td><td>&lt;select&gt;</td><td>Lista desplegable.</td><td><code>&lt;select&gt;&lt;/select&gt;</code></td><td>Formulario.</td></tr>
-<tr><td>85</td><td>&lt;small&gt;</td><td>Texto pequeño.</td><td><code>&lt;small&gt;Nota&lt;/small&gt;</code></td><td>Comentarios.</td></tr>
-<tr><td>86</td><td>&lt;source&gt;</td><td>Fuente multimedia.</td><td><code>&lt;source src="video.mp4"&gt;</code></td><td>Audio/video.</td></tr>
-<tr><td>87</td><td>&lt;span&gt;</td><td>Contenedor en línea.</td><td><code>&lt;span&gt;Texto&lt;/span&gt;</code></td><td>Estilos.</td></tr>
-<tr><td>88</td><td>&lt;strong&gt;</td><td>Importancia fuerte.</td><td><code>&lt;strong&gt;Texto&lt;/strong&gt;</code></td><td>Semántico.</td></tr>
-<tr><td>89</td><td>&lt;style&gt;</td><td>Estilos CSS.</td><td><code>&lt;style&gt;body{}&lt;/style&gt;</code></td><td>En head.</td></tr>
-<tr><td>90</td><td>&lt;sub&gt;</td><td>Subíndice.</td><td><code>&lt;sub&gt;2&lt;/sub&gt;</code></td><td>Química.</td></tr>
-
-<tr><td>91</td><td>&lt;summary&gt;</td><td>Título details.</td><td><code>&lt;summary&gt;Ver&lt;/summary&gt;</code></td><td>Interactivo.</td></tr>
-<tr><td>92</td><td>&lt;sup&gt;</td><td>Superíndice.</td><td><code>&lt;sup&gt;2&lt;/sup&gt;</code></td><td>Exponentes.</td></tr>
-<tr><td>93</td><td>&lt;table&gt;</td><td>Tabla.</td><td><code>&lt;table&gt;&lt;/table&gt;</code></td><td>Datos.</td></tr>
-<tr><td>94</td><td>&lt;tbody&gt;</td><td>Cuerpo tabla.</td><td><code>&lt;tbody&gt;&lt;/tbody&gt;</code></td><td>Organiza filas.</td></tr>
-<tr><td>95</td><td>&lt;td&gt;</td><td>Celda.</td><td><code>&lt;td&gt;Dato&lt;/td&gt;</code></td><td>En tr.</td></tr>
-<tr><td>96</td><td>&lt;template&gt;</td><td>Plantilla oculta.</td><td><code>&lt;template&gt;&lt;/template&gt;</code></td><td>JS.</td></tr>
-<tr><td>97</td><td>&lt;textarea&gt;</td><td>Área texto.</td><td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td><td>Formulario.</td></tr>
-<tr><td>98</td><td>&lt;tfoot&gt;</td><td>Pie tabla.</td><td><code>&lt;tfoot&gt;&lt;/tfoot&gt;</code></td><td>Resumen.</td></tr>
-<tr><td>99</td><td>&lt;th&gt;</td><td>Encabezado celda.</td><td><code>&lt;th&gt;Título&lt;/th&gt;</code></td><td>Negrita.</td></tr>
-<tr><td>100</td><td>&lt;thead&gt;</td><td>Encabezado tabla.</td><td><code>&lt;thead&gt;&lt;/thead&gt;</code></td><td>Organiza.</td></tr>
-<tr><td>101</td><td>&lt;time&gt;</td><td>Fecha/hora.</td><td><code>&lt;time datetime="2025-01-01"&gt;1 Enero&lt;/time&gt;</code></td><td>SEO.</td></tr>
-<tr><td>102</td><td>&lt;video&gt;</td><td>Video incrustado.</td><td><code>&lt;video controls&gt;&lt;/video&gt;</code></td><td>Multimedia.</td></tr>
-
-</table>
+    // 7. INICIALIZACIÓN DE SLICK SLIDER (CORREGIDA Y UNIFICADA)
+    // Se usa $(document).ready() porque Slick depende de jQuery
+    $(document).ready(function(){
+        $('.slider-slick').slick({
+            // Opciones de configuración del desplazamiento
+            autoplay: true,        // Activa el desplazamiento automático
+            autoplaySpeed: 3000,   // Velocidad de autoplay (3 segundos)
+            speed: 1000,          // Velocidad de la animación de transición
+            
+            // Opciones de navegación
+            arrows: true,         // Muestra flechas de navegación (Siguiente/Anterior)
+            dots: true,           // Muestra puntos de navegación en la parte inferior
+            
+            // Adaptabilidad y bucle
+            infinite: true,       // Bucle infinito
+            slidesToShow: 1,      // Diapositivas a mostrar a la vez
+            slidesToScroll: 1,     // Diapositivas a desplazar
+            
+            // Pausar al pasar el ratón
+            pauseOnHover: true
+        });
+    });
+</script>
 
 </body>
 </html>
